@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-player',
@@ -9,7 +9,7 @@ export class PlayerComponent implements OnInit {
   pausebool: boolean = false;
   setValueDeaf = 0.5;
   progressValue: any;
-
+  @Input() choosenUrl: any;
   files=[
     {
       url: '../assets/songs/song1.mp3',
@@ -30,6 +30,11 @@ export class PlayerComponent implements OnInit {
     this.pausebool = true;
 
   }
+  receaveMessage($event){
+    this.choosenUrl = $event;
+    console.log("choosenUrl "+ this.choosenUrl)
+    this.openFile(this.choosenUrl)
+  }
 
   play(){
     this.audioObj.play();
@@ -49,7 +54,7 @@ export class PlayerComponent implements OnInit {
       this.pausebool = false;
     } else{
       this.play()
-      console.log("true")
+      console.log("true" + this.choosenUrl)
       this.pausebool = true;
     }
   }

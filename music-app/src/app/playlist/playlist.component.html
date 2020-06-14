@@ -1,0 +1,6 @@
+<div class="jp-playlist">
+  <ul>
+    <li *ngFor="let file of files"  (click)="chooseFile(file.url)"><div><a href="#"> {{ file.name }} </a> </div></li>
+
+  </ul>
+</div>
